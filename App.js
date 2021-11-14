@@ -29,8 +29,31 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "column",
     flex: 1,
+    margin: 0,
+    padding: 0,
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    backgroundColor: '#737FC0',
+  },
+
+  headerContainer: {
+    flex : 3.5,
+    justifyContent: "center",
+  },
+
+  buttonContainer: {
+    backgroundColor: "white",
+    flex: 3,
     padding: 20,
+    margin: 0,
+    //alignItems: "center",
+    justifyContent: "flex-end",
+    borderTopLeftRadius: 55,
+    borderTopRightRadius: 55,
+    justifyContent: "center",
+    
   },
   
   item: {
@@ -42,26 +65,83 @@ const styles = StyleSheet.create({
   
   title: {
     fontSize: 32,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
+  
+  subtitle: {
+    fontSize: 16,
+    color: "#7B7171",
+    padding: 10,
+    marginVertical: 10,
+    textAlign: "center",
+  },
+
+  buttons: {
+    backgroundColor: "#DDDFFF",
+    padding: 20,
+    margin: 0,
+    borderRadius: 50,
+	  marginVertical: 0,
+    alignItems: "center",
+    //flexDirection: "column",
+    width: 300,
+  },
+  buttonText: {
+    fontSize: 25,
+    color: 'black',
+	  fontWeight: "bold",
+  }, 
+  //flex box containing button + description text
+  buttonTextContainer: {
+    flex: 1,
+    margin: 10,
+    justifyContent: "space-around",
+  },
+
+  bottomRectangle: {
+    flex: 0.2,
+    backgroundColor: "black",
+    justifyContent: "flex-end",
+  },
+	  
 });
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        title="Go to Maps"
-        onPress={() => {
-          navigation.navigate('Maps');
-        }}
-      />
-	  <Text> </Text>
-	  <Button
-        title="Go to Menu"
-        onPress={() => {
-          navigation.navigate('Menu');
-        }}
-      />
+    
+    <View style={styles.container}>
+      <View style = {styles.headerContainer}>
+        <Text style = {styles.title}>UIUC Bike Rack Locations</Text>
+      </View>
+      <View style = {styles.buttonContainer}>
+        <View style = {styles.buttonTextContainer}>
+          <TouchableOpacity onPress={() => {
+                navigation.navigate('Maps');
+              }} style={styles.buttons}>
+              <Text style={styles.buttonText}>Go to Map</Text>
+          </TouchableOpacity>
+          <Text style = {[styles.subtitle, {marginBottom: 0}]}>Map of Bike Rack Locations on campus.</Text>
+          
+        </View>
+        
+        
+        <View style = {styles.buttonTextContainer}>
+          <TouchableOpacity onPress={() => {
+                navigation.navigate('Menu');
+              }} style={styles.buttons}>
+              <Text style={styles.buttonText}>Go to Menu</Text>
+          </TouchableOpacity>
+          <View>
+            <Text style = {[styles.subtitle, {marginBtoom: 0}]}>Lists nearest bike rack locations within 0.5 miles of your location.</Text>
+          </View>
+        </View>
+
+      </View>
+      <View style = {styles.bottomRectangle}></View>
     </View>
+    
   );
 }
 
