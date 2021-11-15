@@ -1,0 +1,44 @@
+import * as React from "react";
+import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
+import MapView, { Callout, Circle, Marker } from "react-native-maps";
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <MapView 
+      style={styles.map}
+      initialRegion={{
+        latitude: 40.110709,
+				longitude: -88.208935,
+				latitudeDelta: 0.0922,
+				longitudeDelta: 0.0421
+      }}
+      >
+        <Marker 
+          coordinate={{
+            latitude: 40.1041984,
+		        longitude: -88.2206039
+          }}
+          pinColor="blue"
+      >
+        <Callout>
+          <Text>Bike Rack Here!</Text>
+        </Callout>
+      </Marker>
+      </MapView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+});
