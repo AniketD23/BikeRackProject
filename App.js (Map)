@@ -9,15 +9,15 @@ export default function App() {
       style={styles.map}
       initialRegion={{
         latitude: 40.110709,
-				longitude: -88.208935,
-				latitudeDelta: 0.0922,
-				longitudeDelta: 0.0421
+	longitude: -88.208935,
+	latitudeDelta: 0.0922,
+	longitudeDelta: 0.0421
       }}
       >
         <Marker 
           coordinate={{
             latitude: 40.1041984,
-		        longitude: -88.2206039
+	    longitude: -88.2206039
           }}
           pinColor="blue"
       >
