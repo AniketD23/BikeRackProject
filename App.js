@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button, View, Text, SafeAreaView, FlatList, StyleSheet, StatusBar, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { SvgUri } from "react-native-svg";
 
 const DATA = [
   {
@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex : 3.5,
     justifyContent: "center",
+    flexDirection: "column",
+    //alignItems: "center",
   },
 
   buttonContainer: {
@@ -48,7 +50,8 @@ const styles = StyleSheet.create({
     flex: 3,
     padding: 20,
     margin: 0,
-    //alignItems: "center",
+    width: "100%",
+    alignItems: "center",
     justifyContent: "flex-end",
     borderTopLeftRadius: 55,
     borderTopRightRadius: 55,
@@ -64,17 +67,20 @@ const styles = StyleSheet.create({
   },
   
   title: {
+    //flex: 1,
     fontSize: 32,
+
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
+    //flexWrap: "wrap",
   },
   
   subtitle: {
     fontSize: 16,
     color: "#7B7171",
     padding: 10,
-    marginVertical: 10,
+    marginVertical: 0,
     textAlign: "center",
   },
 
@@ -85,8 +91,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
 	  marginVertical: 0,
     alignItems: "center",
-    //flexDirection: "column",
-    width: 300,
+    flexDirection: "column",
+    width: "100%",
   },
   buttonText: {
     fontSize: 25,
@@ -98,12 +104,28 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10,
     justifyContent: "space-around",
+    alignItems: 'center',
+    width: "90%",
   },
 
   bottomRectangle: {
     flex: 0.2,
     backgroundColor: "black",
     justifyContent: "flex-end",
+  },
+
+  imgContainer: {
+    margin: 10,
+    flex: 5,
+
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+
+  imgStyle: {
+    width: "90%",
+    height: "90%",
+    resizeMode: "contain",
   },
 	  
 });
@@ -113,7 +135,16 @@ function HomeScreen({ navigation }) {
     
     <View style={styles.container}>
       <View style = {styles.headerContainer}>
-        <Text style = {styles.title}>UIUC Bike Rack Locations</Text>
+        <View style = {styles.imgContainer}>
+          <Image 
+              source = {require("./assets/homeScreen_icon.png")}
+              style = {styles.imgStyle}
+              />
+        </View>
+        <View style = {{flex: 2, width: "100%"}}>
+          <Text style = {styles.title}> {"UIUC Bike Rack Locations"}</Text>
+        </View>
+        
       </View>
       <View style = {styles.buttonContainer}>
         <View style = {styles.buttonTextContainer}>
@@ -134,7 +165,7 @@ function HomeScreen({ navigation }) {
               <Text style={styles.buttonText}>Go to Menu</Text>
           </TouchableOpacity>
           <View>
-            <Text style = {[styles.subtitle, {marginBtoom: 0}]}>Lists nearest bike rack locations within 0.5 miles of your location.</Text>
+            <Text style = {[styles.subtitle, {marginBottom: 0}]}>Lists nearest bike rack locations within 0.5 miles of your location.</Text>
           </View>
         </View>
 
