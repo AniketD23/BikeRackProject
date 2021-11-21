@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button, View, Text, SafeAreaView, FlatList, StyleSheet, StatusBar, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SvgUri } from "react-native-svg";
+//import { SvgUri } from "react-native-svg";
 
 const DATA = [
   {
@@ -88,6 +88,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#DDDFFF",
     padding: 20,
     margin: 0,
+	marginTop: 10,
+	marginBottom: 10,
     borderRadius: 50,
 	  marginVertical: 0,
     alignItems: "center",
@@ -183,7 +185,12 @@ function MapsScreen({ navigation }) {
     }]}>
       <View style={{ flex: 1}}>
 	
-		<Button title="Go back" onPress={() => navigation.goBack()} />
+		
+		<TouchableOpacity onPress={() => {
+                navigation.goBack();
+              }} style={styles.buttons}>
+              <Text style={styles.buttonText}>Go Home</Text>
+          </TouchableOpacity>
 		</View>
 	  
       <View style={{ flex: 9, alignItems: "center"}}>	  
@@ -238,7 +245,11 @@ function MenuScreen({ navigation }) {
 	
 		</View>
       <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-		<Button title="Go to Home Screen" onPress={() => navigation.navigate('Home')} />
+		<TouchableOpacity onPress={() => {
+                navigation.navigate('Home');
+              }} style={styles.buttons}>
+              <Text style={styles.buttonText}>Go to Home Screen</Text>
+          </TouchableOpacity>
 		</View>
     </View>
 	
